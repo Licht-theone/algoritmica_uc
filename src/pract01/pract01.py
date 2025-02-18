@@ -37,8 +37,8 @@ def medir_tiempos_mejor_caso():
         arr = list(range(1, entrada + 1))  # Secuencia creciente
         inicio = time.time()
         suma_dist(arr)
-        fin = time.time()
-        tiempos.append(fin - inicio)
+        tiempo_transcurrido = time.time() - inicio
+        tiempos.append(tiempo_transcurrido)
     return entradas, tiempos
 
 def medir_tiempos_peor_caso():
@@ -51,8 +51,8 @@ def medir_tiempos_peor_caso():
         arr = list(range(entrada, 0, -1))  # Secuencia decreciente
         inicio = time.time()
         suma_dist(arr)
-        fin = time.perf_counter()
-        tiempos.append(fin - inicio)
+        tiempo_transcurrido = time.time() - inicio
+        tiempos.append(tiempo_transcurrido)
     return entradas, tiempos
 
 # Main del programa
@@ -68,10 +68,12 @@ def main():
     ]
 
     for i in range(4) : 
+        print("Lista: ", ejemplos[i])
         t = time.time()
-        print(suma_dist(ejemplos[i]))
+        print("Resultado: ", suma_dist(ejemplos[i]))
         T = time.time() - t
         print("Tiempo de ejecucion: " + str(T) + "s")
+        print("\n")
 
     print("[!] Calculando y creando grafica de la complejidad temporal para el mejor caso [!]")
     # Calculamos y graficamos el mejor caso
@@ -95,7 +97,7 @@ def main():
     #Dibuja la grafica
     with plt.style.context('ggplot'):
         plt.plot(entradas_peor, tiempos_peor, label="Peor caso (secuencia decreciente)")
-        plt.title("Tiempos de ejecución en el mejor caso")
+        plt.title("Tiempos de ejecución en el peor caso")
         plt.xlabel("Tamaño n del array")
         plt.ylabel("Tiempo (segundos)")
         plt.grid(True)

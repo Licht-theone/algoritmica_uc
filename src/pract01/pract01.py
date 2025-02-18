@@ -73,10 +73,11 @@ def main():
         T = time.time() - t
         print("Tiempo de ejecucion: " + str(T) + "s")
 
-    # Graficamos el mejor caso
+    print("[!] Calculando y creando grafica de la complejidad temporal para el mejor caso [!]")
+    # Calculamos y graficamos el mejor caso
     entradas_mejor, tiempos_mejor = medir_tiempos_mejor_caso()
 
-    #TODO Fix graficas
+    #Dibuja la grafica
     with plt.style.context('ggplot'):
         plt.plot(entradas_mejor, tiempos_mejor, label="Mejor caso (secuencia creciente)")
         plt.title("Tiempos de ejecución en el mejor caso")
@@ -86,10 +87,22 @@ def main():
         plt.legend()
     
     plt.show()
-    
 
-    
+    print("[!] Calculando y creando grafica de la complejidad temporal para el peor caso [!]")
+    # Calculamos y graficamos el peor caso
+    entradas_peor, tiempos_peor = medir_tiempos_peor_caso()
 
+    #Dibuja la grafica
+    with plt.style.context('ggplot'):
+        plt.plot(entradas_peor, tiempos_peor, label="Peor caso (secuencia decreciente)")
+        plt.title("Tiempos de ejecución en el mejor caso")
+        plt.xlabel("Tamaño n del array")
+        plt.ylabel("Tiempo (segundos)")
+        plt.grid(True)
+        plt.legend()
+    
+    plt.show()
+            
 # Ejecuta la funcion main en el caso de que se ejecute como un programa principal
 if __name__ == "__main__":
     main()

@@ -18,6 +18,12 @@ def Mayoritario1(A, i, j):
         return m
 
 def Comprobar(A, i, j, m):
+    contador = 0
+    for n in range(i, j):
+        if A[n] == m:
+            contador += 1
+    if contador > (i + j) // 2:
+        return m
     return None
 
 def Mayoritario2(A, i, j):

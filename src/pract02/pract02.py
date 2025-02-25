@@ -18,13 +18,16 @@ def Mayoritario1(A, i, j):
             m = Comprobar(A, i, j, m2)
         return m
 
-## TODO: Pendiente de revisar
+
 def Comprobar(A, i, j, m):
     contador = 0
+    #Compureba las ocurrencias de m
     for n in range(i, j):
         if A[n] == m:
             contador += 1
-    if contador > (i + j) // 2:
+    
+    #Determina si es el elemento mayoritario o no
+    if contador > (i + j - 1) // 2:
         return m
     return None
 
@@ -50,22 +53,28 @@ def Mayoritario3(A, i, j):
     return m
 
 def Candidato(A, i, j):
-    
+    #Numero de elementos
     n = j - i + 1
     
-    #Caso base
+    #Caso base 1
     if n == 1:
         return A[i]
     
+    #Caso base 2
+    if n == 0:
+        return
+
     #Crea C
     C = []
-    
     k = i
+
+    #Recorre toda la lista buscando pares
     while k < j:
         if A[k] == A[k+1]:
-            C.append(C[k])
+            C.append(A[k])
         k += 2
     
+    #Si el tamaño es impar, se contempla el ultimo elemento como candidato
     if n % 2 == 1:
         C.append(A[j])
     
@@ -97,7 +106,7 @@ for i in range(n // 100, n, n // 100):
 """""
 
 def main():
-    arr = [1,2,1,2,2,2,2]
+    arr = [1,2,1,2,1,2,2]
     res = Mayoritario3(arr, 0, len(arr)-1)
     print(res)
 

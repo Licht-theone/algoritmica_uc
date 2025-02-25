@@ -17,6 +17,7 @@ def Mayoritario1(A, i, j):
             m = Comprobar(A, i, j, m2)
         return m
 
+## TODO: Pendiente de revisar
 def Comprobar(A, i, j, m):
     contador = 0
     for n in range(i, j):
@@ -48,8 +49,29 @@ def Mayoritario3(A, i, j):
     return m
 
 def Candidato(A, i, j):
-    return None
+    
+    n = j - i + 1
+    
+    #Caso base
+    if n == 1:
+        return A[i]
+    
+    #Crea C
+    C = []
+    
+    k = i
+    while k < j:
+        if A[k] == A[k+1]:
+            C.append(C[k])
+        k += 2
+    
+    if n % 2 == 1:
+        C.append(A[j])
+    
+    return Candidato(C, 0, len(C) - 1)
 
+
+"""""
 # Ejemplos de entrada
 
 # Complejidad temporal
@@ -71,3 +93,12 @@ for i in range(n // 100, n, n // 100):
     T[2].append(time.time() - t)
 
     print(f'Iteración {i // 10000} de 100')
+"""""
+
+def main():
+    arr = [1,2,1,2,2,2,2]
+    res = Mayoritario3(arr, 0, len(arr)-1)
+    print(res)
+
+if __name__ == "__main__":
+    main()

@@ -7,6 +7,7 @@ def Mayoritario1(A, i, j):
     if i == j:
         return A[i]
     else:
+        k: int
         k  = (i + j) // 2
         m1 = Mayoritario1(A, i, k)
         m2 = Mayoritario1(A, k + 1, j)

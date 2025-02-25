@@ -18,7 +18,6 @@ def Mayoritario1(A, i, j):
         return m
 
 def Comprobar(A, i, j, m):
-    aa=1
     return None
 
 def Mayoritario2(A, i, j):

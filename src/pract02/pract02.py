@@ -101,32 +101,35 @@ for i in range(n // 100, n, n // 100):
     print(f'Iteración {i // 10000} de 100')
 """""
 
+#TODO: Eliminar mensajes de debug y comprobar que las graficas muestran la complejidad adecuadamente
 def main():
     #Ejemplos para Mayoritario 1
     ejemplos = [
         [1,2,1,2,1,2,2],
-        [1,6,6,3,6,6],
+        [1,6,3,6,6,6],
         [1,1,2,2,3,3,4,4],
         [8,5,3,1,2,6]
     ]
 
-    #Muestra el ejemplo y el resultado de  
+    #Muestra el ejemplo y el resultado
     for ejemplo in ejemplos:
         print("Ejemplo 1: ", ejemplo)
         r = Mayoritario1(ejemplo, 0, len(ejemplo) - 1)
-        print("Resultado: ", r)
-    
-    # res = Mayoritario3(arr, 0, len(arr)-1)
-    # print(res)
+        print("Resultado Mayoritario1: ", r)
+        r = Mayoritario2(ejemplo, 0, len(ejemplo) - 1)
+        print("Resultado Mayoritario2: ", r)
+        r = Mayoritario3(ejemplo, 0, len(ejemplo) - 1)
+        print("Resultado Mayoritario3: ", r)
+        print()
 
-    # Entradas para el calculo de la complejidad temporal
+    # Calcula la 
+    print("[!] Calculando el tiempo para graficar la complejidad temporal [!]")
     n = 1000001
     T = [[0], [0], [0]]
     A = [i for i in range(n)]
     size_entradas = [0]
     
-    for i in range(n // 100, n, n // 100):
-        
+    for i in range(n // 100, n, n // 100):   
         t = time.time()
         Mayoritario1(A, 0, i)
         T[0].append(time.time() - t)
@@ -135,16 +138,48 @@ def main():
         Mayoritario2(A, 0, i)
         T[1].append(time.time() - t)
 
+        t = time.time()
+        Mayoritario3(A, 0, i)
+        T[2].append(time.time() - t)
+
         size_entradas.append(i)
-        print(f'Iteración {i // 10000} de 100')
 
     print(T[0])
-    print(len(T[0])), print (len(size_entradas))
-       
-    #Dibuja la grafica
+    print(T[1])
+    print(T[2])
+
+    
+    print("[!] Dibujando grafica de Mayoritario1 [!]")
+    #Dibuja la grafica de el peor caso en Mayoritario 1
     with plt.style.context('ggplot'):
         plt.plot(size_entradas, T[0], label="Peor Caso en Mayoritario 1")
         plt.title("Tiempos de ejecución en el peor caso para Mayoritario 1")
+        plt.xlabel("Tamaño n del array")
+        plt.ylabel("Tiempo (segundos)")
+        plt.grid(True)
+        plt.legend()
+    
+    plt.show()
+
+    print("[!] Dibujando grafica de Mayoritario2 [!]")
+
+    #Dibuja la grafica de el peor caso en Mayoritario 2
+    with plt.style.context('ggplot'):
+        plt.plot(size_entradas, T[1], label="Peor Caso en Mayoritario 2")
+        plt.title("Tiempos de ejecución en el peor caso para Mayoritario 2")
+        plt.xlabel("Tamaño n del array")
+        plt.ylabel("Tiempo (segundos)")
+        plt.grid(True)
+        plt.legend()
+    
+    plt.show()
+
+    print("[!] Dibujando grafica de Mayoritario3 [!]")
+
+    #Dibuja la grafica de el peor caso en Mayoritario 3
+    with plt.style.context('ggplot'):
+        plt.plot(size_entradas, T[2], label="Peor Caso en Mayoritario 3")
+        plt.title("Tiempos de ejecución en el peor caso para Mayoritario 3")
         plt.xlabel("Tamaño n del array")
         plt.ylabel("Tiempo (segundos)")
         plt.grid(True)

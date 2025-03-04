@@ -81,14 +81,10 @@ def Candidato(A, i, j):
     return Candidato(C, 0, len(C) - 1)
 
 
-"""""
+
 # Ejemplos de entrada
 
-# Complejidad temporal
-n = 1000001
-T = [[0], [0], [0]]
-A = [i for i in range(n)]
-
+"""""
 for i in range(n // 100, n, n // 100):
     t = time.time()
     Mayoritario1(A, 0, i)
@@ -122,6 +118,39 @@ def main():
     
     # res = Mayoritario3(arr, 0, len(arr)-1)
     # print(res)
+
+    # Entradas para el calculo de la complejidad temporal
+    n = 1000001
+    T = [[0], [0], [0]]
+    A = [i for i in range(n)]
+    size_entradas = [0]
+    
+    for i in range(n // 100, n, n // 100):
+        
+        t = time.time()
+        Mayoritario1(A, 0, i)
+        T[0].append(time.time() - t)
+
+        t = time.time()
+        Mayoritario2(A, 0, i)
+        T[1].append(time.time() - t)
+
+        size_entradas.append(i)
+        print(f'Iteración {i // 10000} de 100')
+
+    print(T[0])
+    print(len(T[0])), print (len(size_entradas))
+       
+    #Dibuja la grafica
+    with plt.style.context('ggplot'):
+        plt.plot(size_entradas, T[0], label="Peor Caso en Mayoritario 1")
+        plt.title("Tiempos de ejecución en el peor caso para Mayoritario 1")
+        plt.xlabel("Tamaño n del array")
+        plt.ylabel("Tiempo (segundos)")
+        plt.grid(True)
+        plt.legend()
+    
+    plt.show()
 
 if __name__ == "__main__":
     main()

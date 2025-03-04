@@ -21,13 +21,13 @@ def Mayoritario1(A, i, j):
 
 def Comprobar(A, i, j, m):
     contador = 0
-    #Compureba las ocurrencias de m
-    for n in range(i, j):
+    #Compureba las ocurrencias de m (incluyendo A[j])
+    for n in range(i, j + 1):
         if A[n] == m:
             contador += 1
     
     #Determina si es el elemento mayoritario o no
-    if contador > (i + j - 1) // 2:
+    if contador > (j - i + 1) // 2:
         return m
     return None
 
@@ -106,9 +106,22 @@ for i in range(n // 100, n, n // 100):
 """""
 
 def main():
-    arr = [1,2,1,2,1,2,2]
-    res = Mayoritario3(arr, 0, len(arr)-1)
-    print(res)
+    #Ejemplos para Mayoritario 1
+    ejemplos = [
+        [1,2,1,2,1,2,2],
+        [1,6,6,3,6,6],
+        [1,1,2,2,3,3,4,4],
+        [8,5,3,1,2,6]
+    ]
+
+    #Muestra el ejemplo y el resultado de  
+    for ejemplo in ejemplos:
+        print("Ejemplo 1: ", ejemplo)
+        r = Mayoritario1(ejemplo, 0, len(ejemplo) - 1)
+        print("Resultado: ", r)
+    
+    # res = Mayoritario3(arr, 0, len(arr)-1)
+    # print(res)
 
 if __name__ == "__main__":
     main()

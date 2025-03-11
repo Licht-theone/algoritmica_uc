@@ -42,3 +42,42 @@ Iterativo(A, hueco, ficha, m):
 
 
 ## PREGUNTA 2
+
+Iterativo(A, hueco, ficha, m):
+	
+	Y <- 0
+    pila <- Pila()
+	
+	while not (m <= len(a) - 2) //EsSencillo(x)	
+		if ficha = n + 1 
+			m <== m + 1 
+			
+		if n <= ficha <= n +2  
+			m <== m + 1 
+	
+		
+		if hueco - 1 <= ficha <= hueco + 1
+			nuevo_hueco <- ficha
+			nueva_ficha <- hueco - A[hueco]
+		
+		else if A[hueco] == A[ficha + A[hueco]]
+			nuevo_hueco <- ficha
+			nueva_ficha <- hueco + A[hueco]
+		else
+			nuevo_hueco <- ficha
+			nueva_ficha <- hueco + A[hueco]	* 2
+	
+		hueco <- nuevo_hueco
+		ficha <- nueva ficha
+
+        Apila(hueco, ficha, P)
+	Mostrar(A)
+
+    while pila not empty:
+        hueco, ficha <- Desapila(P)
+        A[hueco], A[ficha] = A[ficha], A[hueco] 
+        Mostrar(A)
+
+        y <- y + 1
+
+	return y

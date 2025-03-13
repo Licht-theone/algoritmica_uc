@@ -1,3 +1,6 @@
+[!CAUTION]
+El pseudocodigo requiere de cambios, asi que no lo copieis ni os fieis de ello.
+
 ## PREGUNTA 1
 
 Teniendo el código de la práctica es copiar y pegar, el EsSencillo sería la condición del primer if y Directo sería la función Mostrar. F(x) tiene que variar la m quedando m = m + 1 ya que es de lo 

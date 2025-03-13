@@ -1,5 +1,5 @@
-[!CAUTION]
-El pseudocodigo requiere de cambios, asi que no lo copieis ni os fieis de ello.
+> [!CAUTION]
+> El pseudocodigo requiere de cambios, asi que no lo copieis ni os fieis de ello.
 
 ## PREGUNTA 1
 

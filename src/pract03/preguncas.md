@@ -13,7 +13,7 @@ Mostrar en cada iteración del bucle que tiene la función c.
 Iterativo(A, hueco, ficha, m):
 	
 	Y <- 0
-	
+	 
 	while not (m <= len(a) - 2) //EsSencillo(x)
 		Mostrar(A)
 		A[hueco], A[ficha] = A[ficha], A[hueco] 	
@@ -34,7 +34,7 @@ Iterativo(A, hueco, ficha, m):
 			nueva_ficha <- hueco + A[hueco]
 		else
 			nuevo_hueco <- ficha
-			nueva_ficha <- hueco + A[hueco]	* 2
+			nueva_ficha <- ficha + A[hueco]	* 2
 	
 		hueco <- nuevo_hueco
 		ficha <- nueva ficha
@@ -68,18 +68,20 @@ Iterativo(A, hueco, ficha, m):
 			nueva_ficha <- hueco + A[hueco]
 		else
 			nuevo_hueco <- ficha
-			nueva_ficha <- hueco + A[hueco]	* 2
+			nueva_ficha <- ficha + A[hueco]	* 2
 	
 		hueco <- nuevo_hueco
 		ficha <- nueva ficha
 
-        Apila(hueco, ficha, P)
+        Apila(hueco, ficha,m , P)
 	Mostrar(A)
 
     while pila not empty:
         hueco, ficha <- Desapila(P)
         A[hueco], A[ficha] = A[ficha], A[hueco] 
-        Mostrar(A)
+        
+		Intertir(A) // Aqui se invierte el array
+		Mostrar(A)
 
         y <- y + 1
 

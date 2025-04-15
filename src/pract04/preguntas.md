@@ -17,4 +17,16 @@
         return MonedasSeleccionadas
 
 
-## EJERCICIO 2 ##
+## EJERCICIO 3 ##
+
+    monedas_bottom-up(V[1..n], cantidad):
+        A[1..cantidad, 0..n] <- ([0,..,0] , [0,..,0])
+        
+        for i <- 1 to cantidad
+            for j <- 1 to n
+                if V[i] > j
+                    A[i, j] ← A[i – 1, j]
+                else
+                    A[i, j] ← min {A[i – 1, j], A[i, j – V[i]] + 1}
+        // TODO: el resto
+        

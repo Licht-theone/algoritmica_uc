@@ -28,5 +28,14 @@
                     A[i, j] ← A[i – 1, j]
                 else
                     A[i, j] ← min {A[i – 1, j], A[i, j – V[i]] + 1}
-        // TODO: el resto
-        
+    
+        i ← m; j ← n
+        listaMonedas ← []
+        while i ≥ 1 y j > 0:
+            if A[i][j] = A[i-1][j]
+            // no usamos ninguna moneda de valor V[i]
+                i ← i − 1
+            else
+                añadir V[i] a listaMoneda
+                j ← j − V[i]
+        return listaMonedas

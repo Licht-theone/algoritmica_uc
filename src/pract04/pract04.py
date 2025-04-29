@@ -23,9 +23,9 @@ def monedas_voraz(V, cantidad):
     return MonedasSeleccionadas
 
 def main():
-    
-    Monedas = [1, 2, 5, 10, 20, 50]
 
+    Monedas = [1, 2, 5, 10, 20, 50]
+    print("Algoritmo voraz: lista:", Monedas, ". Cantidad: 103")
     A = monedas_voraz(Monedas, 103)
 
     print(A)

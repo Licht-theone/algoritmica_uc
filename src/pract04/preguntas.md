@@ -18,34 +18,30 @@
 
 
 ## EJERCICIO 2 ##
-    //Array de memoización (inicialmente “no calculado”)
-    para j desde 0 hasta n hacer
-        memo[j] ← –1
-    fin para
-    memo[0] ← 0   // caso base: 0 monedas para cambiar 0 unidades
 
-    //Función recursiva con memoización
-    función C(j):
-        si memo[j] ≠ –1 entonces
-            return memo[j]
-        fin si
+monedas_topdown(V[1..m], n):
+    for j ← 0 to n:
+        for i ← 1 to m:
+            M[j, i] ← NULL
+    return CAMBIO_TD(n, m)
 
-        minC ← ∞
-        para i desde 1 hasta m hacer
-            si V[i] ≤ j entonces
-                c ← 1 + C(j – V[i])
-                si c < minC entonces
-                    minC ← c
-                fin si
-            fin si
-        fin para
+rec_monedas_topdown(j, i):
+    //Casos base
+    if j = 0 then
+        return 0
 
-        memo[j] ← minC
-        return minC
-    fin función
+    if i = 1 then
+        return j       // necesitamos j monedas de valor 1
 
+    if M[j, i] ≠ NULL then
+        return M[j, i]
 
-    return C(n)
+    if V[i] > j then / no podemos usar la moneda V[i]
+        M[j, i] ← rec_monedas_topdown(j, i−1)
+    else
+        M[j, i] ← min(CAMBIO_TD(j, i−1), 1 + CAMBIO_TD(j−V[i], i))
+
+    return M[j, i]
 
 
 ## EJERCICIO 3 ##

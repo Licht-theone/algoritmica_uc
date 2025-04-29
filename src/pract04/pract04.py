@@ -22,12 +22,37 @@ def monedas_voraz(V, cantidad):
     MonedasSeleccionadas.reverse() ## Invertimos el resultado para asi que corresponda con el valor de las monedas       
     return MonedasSeleccionadas
 
+def monedas_topdown(V, cantidad):
+    m = len(V)
+    M = [ [ None ] * (m) for _ in range(cantidad+1) ]
+    return rec_monedas_topdown(cantidad, len(V), M, V)
+
+def rec_monedas_topdown(j, i, M, V):
+    ## Casos base
+    if j == 0:
+        return 0
+
+    if i == 1:
+        return j 
+
+    if M[j][i] != None:
+        return M[j][i]
+
+    if V[i] > j:
+        M[j][i] = rec_monedas_topdown(j, i-1, M, V)
+    else:
+        M[j][i] = min(rec_monedas_topdown(j, i-1, M, V), 1 + rec_monedas_topdown(j - V[i], i, M, V))
+
+    return M[j][i]
+
 def main():
 
     Monedas = [1, 2, 5, 10, 20, 50]
     print("Algoritmo voraz: lista:", Monedas, ". Cantidad: 103")
     A = monedas_voraz(Monedas, 103)
+    print(A)
 
+    A = monedas_topdown(Monedas, 103)
     print(A)
 
 if __name__ == "__main__":

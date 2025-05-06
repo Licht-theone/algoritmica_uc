@@ -23,7 +23,7 @@ monedas_topdown(V[1..m], n):
     for j ← 0 to n:
         for i ← 1 to m:
             M[j, i] ← NULL
-    return CAMBIO_TD(n, m)
+    return rec_monedas_topdown(n, m)
 
 rec_monedas_topdown(j, i):
     //Casos base
@@ -39,7 +39,7 @@ rec_monedas_topdown(j, i):
     if V[i] > j then / no podemos usar la moneda V[i]
         M[j, i] ← rec_monedas_topdown(j, i−1)
     else
-        M[j, i] ← min(CAMBIO_TD(j, i−1), 1 + CAMBIO_TD(j−V[i], i))
+        M[j, i] ← min(rec_monedas_topdown(j, i−1), 1 + rec_monedas_topdown(j−V[i], i))
 
     return M[j, i]
 
